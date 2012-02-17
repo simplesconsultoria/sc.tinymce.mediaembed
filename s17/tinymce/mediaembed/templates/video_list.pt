@@ -1,0 +1,8 @@
+<div class="video_list_result">
+    <tal:block tal:repeat="video python:view.video_query()">
+    <div class="video">
+        <h3 tal:content="video/Title">Title</h3>
+        <p tal:content="video/Description">video description</p>
+    </div>
+    </tal:block>
+</div>
