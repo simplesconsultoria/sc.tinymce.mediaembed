@@ -26,8 +26,12 @@ setup(name='s17.tinymce.mediaembed',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
-          'five.grok',          
+          'five.grok',
+          's17.media.views',
       ],
+      extras_require={
+        'test': ['plone.app.testing'],
+        },      
       entry_points="""
       # -*- Entry points: -*-
 
