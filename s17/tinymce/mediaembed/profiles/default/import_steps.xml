@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step
+    id="s17.tinymce.mediaembed-portal_transforms"
+    handler="s17.tinymce.mediaembed.setuphandlers.setup_portal_transforms"
+    title="s17.tinymce.mediaembed portal_transforms setup"
+    version="1.0">
+    <dependency step="plone-final"/>
+  </import-step>
+</import-steps>

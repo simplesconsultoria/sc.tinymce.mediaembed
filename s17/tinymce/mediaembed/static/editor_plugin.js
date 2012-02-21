@@ -11,7 +11,7 @@
 (function() {
 	// Load plugin specific language pack
 	tinymce.PluginManager.requireLangPack('mediaembed');
-
+    tinymce.extended_valid_elements ="a[href|style]";
 	tinymce.create('tinymce.plugins.MediaEmbedPlugin', {
 		/**
 		 * Initializes the plugin, this will be executed after the plugin has been created.
@@ -22,12 +22,13 @@
 		 * @param {string} url Absolute URL to where the plugin is located.
 		 */
 		init : function(ed, url) {
+		
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceMediaEmbed');
 			ed.addCommand('mceMediaEmbed', function() {
 				ed.windowManager.open({
-					file : url + '/dialogs.htm',
-					width : 520 + parseInt(ed.getLang('mediaembed.delta_width', 0)),
-					height : 520 + parseInt(ed.getLang('mediaembed.delta_height', 0)),
+					file : url + '/media_embed.htm.pt',
+					width : 850 + parseInt(ed.getLang('mediaembed.delta_width', 0)),
+					height : 500 + parseInt(ed.getLang('mediaembed.delta_height', 0)),
 					inline : 1
 				}, {
 					plugin_url : url, // Plugin absolute URL
@@ -44,8 +45,36 @@
 
 			// Add a node change handler, selects the button in the UI when a image is selected
 			ed.onNodeChange.add(function(ed, cm, n) {
-				cm.setActive('mediaembed', n.nodeName === 'IMG');
+				cm.setActive('mediaembed', n.nodeName === 'A');
 			});
+
+			ed.onInit.add(function() {
+				if (ed.settings.content_css !== false)
+					ed.dom.loadCSS(url + "/css/content.css");			
+			});
+
+            ed.onNodeChange.addToTop(function(ed, cm, n) {
+                // look for selection in an element of the class name "media-link"
+                var elm = n; // remember original node
+                if ($(elm).hasClass('media-link')){                
+                    $(elm).css('border', '1px solid red');
+                    if ($(ed.lastActiveNode).hasClass('media-link') && $(ed.lastActiveNode)[0] !== $(elm)[0]) {
+                        $(ed.lastActiveNode).css('border', 'medium none');
+                    }                    
+                } else {
+                    if ($(ed.lastActiveNode).hasClass('media-link')) {
+                        $(ed.lastActiveNode).css('border', 'medium none');
+                    }
+                }
+
+                if ($(ed.lastActiveNode).hasClass('media-link')){
+                    cm.setActive("mediaembed", true);
+                    try { ed.selection.select($(ed.lastActiveNode).parent('.media')); } catch(e) {};                    
+                } else {
+                    cm.setActive("mediaembed", false);
+                }
+                ed.lastActiveNode = elm;
+            });
 		},
 
 		/**

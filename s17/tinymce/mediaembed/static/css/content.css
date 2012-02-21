@@ -1,3 +1,9 @@
-.ploneSkin span.mce_plonetemplates {
-    background-position:-820px -20px;
+/*.video {
+    width:300px;
+    height:200px;
+}*/
+a.media-link {
+    background-color:#888 !important;
+    display:block;
+    cursor: pointer;
 }

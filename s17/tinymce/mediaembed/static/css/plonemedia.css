@@ -1,0 +1,46 @@
+#internalpath { margin: 0 0 10px 10px; height: 2em; }
+.columnlibraries { width: 120px; }
+.searchButton, #upload { margin-top: 4px; }
+.subPanel { width: 296px; }
+.uponelevel { height: 22px; }
+#uponelevel { line-height: 1em; }
+#internal_details_panel { width: 190px; display: none; }
+#upload_panel { width: 190px; display: none; }
+#uploadfile { width: 100%; }
+#upload_iframe { display: none; }
+#internallinkcontainer { height: 240px; }
+
+.panel-search {
+    padding:10px;
+    width:45%;
+    border:1px solid #CCC;
+    float:left;
+}
+.panel-search .folder-listing {
+    height:12em;
+}
+.panel-search .item {
+    padding:5px 15px;
+}
+.panel-search .item:hover {
+    background-color:#F3F3F3;
+}
+
+.panel-preview {
+    float:right;
+    width:50%;
+}
+
+.item a {
+    display: inline-block;
+    line-height: 2em;
+    padding-left: 20px;
+    margin-left: 15px;
+}
+.folderish {
+    background: url("++resource++s17.tinymce.mediaembed/img/embeb.png") no-repeat scroll 0 center transparent;
+    margin-left:28px;
+}
+.media-link {
+    background: url("++resource++s17.tinymce.mediaembed/img/embeb.png") no-repeat scroll 0 center transparent;
+}
