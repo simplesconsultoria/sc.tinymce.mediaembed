@@ -62,7 +62,7 @@ var MediaEmbedDialog = {
                         container.append(element);
                     });
                 } else {
-                    container.html('<p>No Results</p>');
+                    container.html('<p>'+jvariables.messages['NO_RESULTS_MSG']+'</p>');
                 }
                 $('.panel .folder-listing').html(container);
 
@@ -77,7 +77,7 @@ var MediaEmbedDialog = {
                     var metadata = $(this).siblings('a');
                     var preview = $('<div/>');
                     var link = $('<a class="'+ metadata.data('itype') +'" href="'+metadata.attr('href')+'"></a>');
-                    var dimmensions = $('<div>Width: <input name="media_width" type="text" size="10"/> Height: <input name="media_height" type="text" size="10"/></div>');
+                    var dimmensions = $('<div>'+jvariables.messages['WIDTH_MSG']+': <input name="media_width" type="text" size="10"/>'+jvariables.messages['HEIGTH_MSG']+': <input name="media_height" type="text" size="10"/></div>');
                     var h = '300';
                     var w = '425';
                     preview.append(link);
@@ -86,7 +86,11 @@ var MediaEmbedDialog = {
                     $('.preview').html(preview);
                     if ($('.video')[0] !== undefined){
                         link.attr('style',"display:block;width:425px;height:300px;");
-                        flowplayer("a.video", "++resource++s17.media.views/flowplayer/flowplayer-3.2.7.swf");
+                        flowplayer("a.video", "++resource++s17.media.views/flowplayer/flowplayer-3.2.7.swf", {
+                                clip: {
+                                    autoPlay: false
+                                }
+                        });
                         $(dimmensions).find('input[name="media_width"]').val(w);
                         $(dimmensions).find('input[name="media_height"]').val(h);
                     }
