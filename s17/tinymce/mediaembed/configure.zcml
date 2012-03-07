@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="s17.tinymce.mediaembed">
+
+  <five:registerPackage package="."/>
+  <includeDependencies package="." />
+  <include package="five.grok" />
+  <grok:grok package="." />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="s17.tinymce.mediaembed"
+      directory="profiles/default"
+      description="Installs the s17.tinymce.mediaembed package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+</configure>
