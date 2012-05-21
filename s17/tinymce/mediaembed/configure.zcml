@@ -20,4 +20,12 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="s17.tinymce.mediaembed: Uninstall"
+      directory="profiles/uninstall"
+      description="Uninstall the s17.tinymce.mediaembed package."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
 </configure>

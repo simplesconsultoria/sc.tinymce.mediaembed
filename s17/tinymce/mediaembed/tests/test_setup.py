@@ -20,11 +20,18 @@ class TestInstall(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.qi = getattr(self.portal, 'portal_quickinstaller')
+        self.pt = getattr(self.portal, 'portal_tinymce')
 
     def test_installed(self):
         self.assertTrue(self.qi.isProductInstalled(PROJECTNAME),
                         '%s not installed' % PROJECTNAME)
 
+    def test_tiny_customplugins(self):
+        self.assertIn('++resource++s17.tinymce.mediaembed/editor_plugin.js',
+                      self.pt.customplugins)
+
+    def test_tiny_customtoolbar(self):
+        self.assertIn('mediaembed', self.pt.customtoolbarbuttons)
 
 class TestUninstall(unittest.TestCase):
     """Ensure product is properly uninstalled
@@ -38,9 +45,17 @@ class TestUninstall(unittest.TestCase):
         login(self.portal, TEST_USER_NAME)
         self.qi = getattr(self.portal, 'portal_quickinstaller')
         self.qi.uninstallProducts(products=[PROJECTNAME])
+        self.pt = getattr(self.portal, 'portal_tinymce')
 
     def test_uninstalled(self):
         self.assertFalse(self.qi.isProductInstalled(PROJECTNAME))
+
+    def test_uninstall_tiny_customplugins(self):
+        self.assertNotIn('++resource++s17.tinymce.mediaembed/editor_plugin.js',
+            self.pt.customplugins)
+
+    def test_uninstall_tiny_customtoolbar(self):
+        self.assertNotIn('mediaembed', self.pt.customtoolbarbuttons)
 
 
 def test_suite():

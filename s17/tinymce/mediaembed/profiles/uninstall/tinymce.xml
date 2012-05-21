@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- this uninstall profile doesnt work -->
+<object>
+ <resourcetypes>
+  <customplugins purge="False">
+   <element value="mediaembed|/++resource++s17.tinymce.mediaembed/editor_plugin.js" remove="True" />
+  </customplugins>
+ </resourcetypes>
+ <toolbar>
+  <customtoolbarbuttons purge="False">
+   <element value="mediaembed" remove="True" />
+  </customtoolbarbuttons>
+ </toolbar>
+</object>
