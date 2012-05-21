@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 import os
 
 version = '1.0'
-long_description = open("README.rst").read() + "\n" + \
+long_description = open("README.txt").read() + "\n" + \
                    open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
                    open(os.path.join("docs", "CREDITS.txt")).read() + "\n" + \
                    open(os.path.join("docs", "HISTORY.txt")).read()
@@ -14,10 +14,11 @@ setup(name='s17.tinymce.mediaembed',
       description="Media Embed plugin for TinyMCE",
       long_description=long_description,
       classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 4.1",
+        "Framework :: Plone :: 4.2",
         "Intended Audience :: End Users/Desktop",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
