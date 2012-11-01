@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-11-01 19:22+0000\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,16 +13,4 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
-
-#: sc/tinymce/mediaembed/static/media_embed.htm.pt:34
-msgid "Media List"
-msgstr ""
-
-#: sc/tinymce/mediaembed/static/media_embed.htm.pt:39
-msgid "Preview"
-msgstr ""
-
-#: sc/tinymce/mediaembed/static/media_embed.htm.pt:4
-msgid "ploneimage_dlg_dialog_title"
-msgstr ""
 
