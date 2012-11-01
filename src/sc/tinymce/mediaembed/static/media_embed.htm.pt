@@ -20,13 +20,13 @@
             <div class="panel">
                 <div class="pathbar"></div>
                 <div class="search">
-                  <div class="widget">
+                  <div class="widget"></div>
                     <input type="text" name="search" value="" size="12" class="search-content"/>
                     <input type="button" name="search-button" value="Search" i18n:domain="plone.tinymce" i18n:attributes="value" class="search-button"/>
                 </div>
                 <div class="media-type">
-                    <span><input i18n:translate="" type="radio" value="video" name="media_type" checked="checked"> Video</span>
-                    <span><input i18n:translate="" type="radio" value="audio" name="media_type"> Audio</span>
+                    <span><input i18n:translate="" type="radio" value="video" name="media_type" checked="checked" /> Video</span>
+                    <span><input i18n:translate="" type="radio" value="audio" name="media_type" /> Audio</span>
                 </div>
             </div>
             <div class="row">
