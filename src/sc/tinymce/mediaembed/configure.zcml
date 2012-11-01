@@ -5,7 +5,7 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="s17.tinymce.mediaembed">
+    i18n_domain="sc.tinymce.mediaembed">
 
   <five:registerPackage package="."/>
   <includeDependencies package="." />
@@ -14,17 +14,17 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="s17.tinymce.mediaembed"
+      title="sc.tinymce.mediaembed"
       directory="profiles/default"
-      description="Installs the s17.tinymce.mediaembed package"
+      description="Installs the sc.tinymce.mediaembed package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
   <genericsetup:registerProfile
       name="uninstall"
-      title="s17.tinymce.mediaembed: Uninstall"
+      title="sc.tinymce.mediaembed: Uninstall"
       directory="profiles/uninstall"
-      description="Uninstall the s17.tinymce.mediaembed package."
+      description="Uninstall the sc.tinymce.mediaembed package."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

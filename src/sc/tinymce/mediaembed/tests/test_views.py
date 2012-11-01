@@ -10,20 +10,20 @@ from zope.component import queryMultiAdapter
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import setRoles
 
-from s17.tinymce.mediaembed.testing import INTEGRATION_TESTING
+from sc.tinymce.mediaembed.testing import INTEGRATION_TESTING
 
 from s17.media.views.events import set_media_layout
 
 from Products.CMFPlone.tests import dummy
 
-import s17.tinymce.mediaembed.tests
+import sc.tinymce.mediaembed.tests
 
 try:
     import json
 except ImportError:
     import simplejson as json
 
-dir = s17.tinymce.mediaembed.tests
+dir = sc.tinymce.mediaembed.tests
 
 MP3 = open(os.path.join(os.path.dirname(dir.__file__),'test.mp3')).read()
 MP4 = open(os.path.join(os.path.dirname(dir.__file__),'test.mp4')).read()

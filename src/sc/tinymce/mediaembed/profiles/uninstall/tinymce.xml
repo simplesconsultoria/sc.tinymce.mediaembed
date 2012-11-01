@@ -3,7 +3,7 @@
 <object>
  <resourcetypes>
   <customplugins purge="False">
-   <element value="mediaembed|/++resource++s17.tinymce.mediaembed/editor_plugin.js" remove="True" />
+   <element value="mediaembed|/++resource++sc.tinymce.mediaembed/editor_plugin.js" remove="True" />
   </customplugins>
  </resourcetypes>
  <toolbar>

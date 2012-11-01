@@ -2,4 +2,4 @@
 
 from zope.i18nmessageid import MessageFactory
 
-_ = MessageFactory('s17.tinymce.mediaembed')
+_ = MessageFactory('sc.tinymce.mediaembed')

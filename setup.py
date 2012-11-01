@@ -9,7 +9,7 @@ long_description = open("README.txt").read() + "\n" + \
                    open(os.path.join("docs", "CREDITS.txt")).read() + "\n" + \
                    open(os.path.join("docs", "HISTORY.txt")).read()
 
-setup(name='s17.tinymce.mediaembed',
+setup(name='sc.tinymce.mediaembed',
       version=version,
       description="Media Embed plugin for TinyMCE",
       long_description=long_description,
@@ -31,10 +31,11 @@ setup(name='s17.tinymce.mediaembed',
       keywords='plone audio video multimedia plugin tinymce',
       author='Silvestre Huens',
       author_email='s.huens@gmail.com',
-      url='https://github.com/simplesconsultoria/s17.tinymce.mediaembed',
+      url='https://github.com/simplesconsultoria/sc.tinymce.mediaembed',
       license='GPLv2',
-      packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['s17', 's17.tinymce'],
+      packages=find_packages('src', exclude=['ez_setup']),
+      package_dir={'': 'src'},
+      namespace_packages=['sc', 'sc.tinymce'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[

@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-PROJECTNAME = 's17.tinymce.mediaembed'
+PROJECTNAME = 'sc.tinymce.mediaembed'

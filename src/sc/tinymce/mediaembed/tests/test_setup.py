@@ -7,8 +7,8 @@ from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import login
 from plone.app.testing import setRoles
 
-from s17.tinymce.mediaembed.config import PROJECTNAME
-from s17.tinymce.mediaembed.testing import INTEGRATION_TESTING
+from sc.tinymce.mediaembed.config import PROJECTNAME
+from sc.tinymce.mediaembed.testing import INTEGRATION_TESTING
 
 
 class TestInstall(unittest.TestCase):
@@ -27,7 +27,7 @@ class TestInstall(unittest.TestCase):
                         '%s not installed' % PROJECTNAME)
 
     def test_tiny_customplugins(self):
-        self.assertIn('++resource++s17.tinymce.mediaembed/editor_plugin.js',
+        self.assertIn('++resource++sc.tinymce.mediaembed/editor_plugin.js',
                       self.pt.customplugins)
 
     def test_tiny_customtoolbar(self):
@@ -51,7 +51,7 @@ class TestUninstall(unittest.TestCase):
         self.assertFalse(self.qi.isProductInstalled(PROJECTNAME))
 
     def test_uninstall_tiny_customplugins(self):
-        self.assertNotIn('++resource++s17.tinymce.mediaembed/editor_plugin.js',
+        self.assertNotIn('++resource++sc.tinymce.mediaembed/editor_plugin.js',
             self.pt.customplugins)
 
     def test_uninstall_tiny_customtoolbar(self):

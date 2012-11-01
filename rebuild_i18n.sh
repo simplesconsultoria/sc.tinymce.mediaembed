@@ -1,8 +1,8 @@
 #! /bin/sh
 
 PATH=bin:$PATH
-I18NDOMAIN="s17.tinymce.mediaembed"
-BASE_DIRECTORY="s17/tinymce/mediaembed"
+I18NDOMAIN="sc.tinymce.mediaembed"
+BASE_DIRECTORY="src/sc/tinymce/mediaembed"
 
 # Synchronise the templates and scripts with the .pot.
 i18ndude rebuild-pot --pot ${BASE_DIRECTORY}/locales/${I18NDOMAIN}.pot \

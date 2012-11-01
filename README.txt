@@ -1,5 +1,5 @@
 **********************
-s17.tinymce.mediaembed
+sc.tinymce.mediaembed
 **********************
 
 .. contents:: Table of Contents
@@ -17,10 +17,10 @@ TBA
 Mostly Harmless
 ---------------
 
-.. image:: https://secure.travis-ci.org/simplesconsultoria/s17.tinymce.mediaembed.png
-    :target: http://travis-ci.org/simplesconsultoria/s17.tinymce.mediaembed
+.. image:: https://secure.travis-ci.org/simplesconsultoria/sc.tinymce.mediaembed.png
+    :target: http://travis-ci.org/simplesconsultoria/sc.tinymce.mediaembed
 
 Have an idea? Found a bug? Let us know by `opening a support ticket`_.
 
-.. _`opening a support ticket`: https://github.com/simplesconsultoria/s17.tinymce.mediaembed/issues
+.. _`opening a support ticket`: https://github.com/simplesconsultoria/sc.tinymce.mediaembed/issues
 

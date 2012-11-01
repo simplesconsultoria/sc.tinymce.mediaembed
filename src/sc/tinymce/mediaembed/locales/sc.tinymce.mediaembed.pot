@@ -15,7 +15,7 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: s17.tinymce.mediaembed\n"
+"Domain: sc.tinymce.mediaembed\n"
 
 #: s17/tinymce/mediaembed/static/media_embed.htm.pt:34
 msgid "Media List"
