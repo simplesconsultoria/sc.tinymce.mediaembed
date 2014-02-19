@@ -2,7 +2,7 @@
 # use `make options=-v` to run buildout with extra options
 
 pep8_ignores = E501
-options = -N -q -t 3
+options = -N -q -t 5
 
 prerequisites:
 	sudo apt-get install -qq pep8 pyflakes
