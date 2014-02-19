@@ -1,6 +1,26 @@
 language: python
 python: 2.7
-install: make install
-script: make tests
+env:
+  matrix:
+    - PLONE_VERSION=4.2
+    - PLONE_VERSION=4.3 QA=true
+install:
+  - sed -ie "s#travis-4.x.cfg#travis-$PLONE_VERSION.x.cfg#" travis.cfg
+  - mkdir -p buildout-cache/downloads
+  - python bootstrap.py -c travis.cfg
+  - bin/buildout -c travis.cfg annotate
+  - bin/buildout -c travis.cfg -N -q
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+script: bin/test && bin/code-analysis
+after_success:
+  - test $QA && bin/buildout -c coverage.cfg -N -q || true
+  - test $QA && bin/coverage.sh && pip install -q coveralls && coveralls || true
 notifications:
-  irc: irc.freenode.org#simplesconsultoria
+  irc:
+    channels: irc.freenode.org#simplesconsultoria
+    template:
+      - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+      - "Change view : %{compare_url}"
+      - "Build details : %{build_url}"
