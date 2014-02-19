@@ -33,6 +33,7 @@ class TestInstall(unittest.TestCase):
     def test_tiny_customtoolbar(self):
         self.assertIn('mediaembed', self.pt.customtoolbarbuttons)
 
+
 class TestUninstall(unittest.TestCase):
     """Ensure product is properly uninstalled
     """
@@ -52,7 +53,7 @@ class TestUninstall(unittest.TestCase):
 
     def test_uninstall_tiny_customplugins(self):
         self.assertNotIn('++resource++sc.tinymce.mediaembed/editor_plugin.js',
-            self.pt.customplugins)
+                         self.pt.customplugins)
 
     def test_uninstall_tiny_customtoolbar(self):
         self.assertNotIn('mediaembed', self.pt.customtoolbarbuttons)

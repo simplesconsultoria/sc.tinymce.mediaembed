@@ -6,9 +6,6 @@ from Products.CMFCore.utils import getToolByName
 from Products.TinyMCE.interfaces.utility import ITinyMCE
 from zope.component import getUtility
 
-from Products.TinyMCE.adapters.interfaces.JSONFolderListing import \
-     IJSONFolderListing
-
 from s17.media.views.browser import IVideo, IAudio
 
 from Acquisition import aq_inner
@@ -24,33 +21,34 @@ try:
 except ImportError:
     import simplejson as json
 
-grok.templatedir("templates")
+grok.templatedir('templates')
 
 
 class VideoList(grok.View):
     grok.context(Interface)
-    grok.name("video_list")
+    grok.name('video_list')
     grok.template('video_list')
-    grok.require("zope2.View")
+    grok.require('zope2.View')
 
     def video_query(self, index=''):
         """ """
         results = []
         catalog = getToolByName(self.context, 'portal_catalog')
         iface = IVideo
-        videos = catalog(object_provides=iface.__identifier__, 
-                            sort_on='created', Title=index)
+        videos = catalog(object_provides=iface.__identifier__,
+                         sort_on='created', Title=index)
 
         results = videos
         return results
 
+
 class MediaSearch(grok.View):
     grok.context(Interface)
-    grok.name("media_search")
-    grok.require("zope2.View")
+    grok.name('media_search')
+    grok.require('zope2.View')
 
-    def render(self, search_for='', path='', media_type='video', 
-        folders=True):
+    def render(self, search_for='', path='', media_type='video',
+               folders=True):
         """ """
         results = []
         normalizer = getUtility(IIDNormalizer)
@@ -60,21 +58,22 @@ class MediaSearch(grok.View):
         if not IFolderish.providedBy(object):
             object = aq_parent(object)
 
-        path = '/'.join(object.getPhysicalPath())        
-        
+        path = '/'.join(object.getPhysicalPath())
+
         catalog = getToolByName(self.context, 'portal_catalog')
-        medias = {'video':IVideo, 'audio':IAudio}
+        medias = {'video': IVideo, 'audio': IAudio}
         iface = medias[media_type]
-        media_results = catalog(object_provides=iface.__identifier__, 
-                            sort_on='created', Title=search_for,
-                            path={'query': path, 'depth': 1})
+        media_results = catalog(object_provides=iface.__identifier__,
+                                sort_on='created', Title=search_for,
+                                path={'query': path, 'depth': 1})
 
         utility = getUtility(ITinyMCE)
         folder_portal_types = []
         if folders and not search_for:
             folder_portal_types.extend(utility.containsobjects.split('\n'))
-            folders_results = catalog(portal_type=folder_portal_types, 
-                sort_on='getObjPositionInParent', path={'query': path, 'depth': 1})
+            folders_results = catalog(portal_type=folder_portal_types,
+                                      sort_on='getObjPositionInParent',
+                                      path={'query': path, 'depth': 1})
             media_results = folders_results + media_results
 
         for brain in media_results:
@@ -84,11 +83,11 @@ class MediaSearch(grok.View):
                 'url': brain.getURL(),
                 'portal_type': brain.portal_type,
                 'normalized_type': normalizer.normalize(brain.portal_type),
-                'title': brain.Title == "" and brain.id or brain.Title,
+                'title': brain.Title == '' and brain.id or brain.Title,
                 'icon': brain.getIcon,
                 'is_folderish': brain.is_folderish,
                 'itype': 'folder' if brain.is_folderish else media_type
-                })
+            })
 
         return json.dumps(results)
 
@@ -96,7 +95,7 @@ class MediaSearch(grok.View):
 class TinyMediaEmbed(grok.View):
     grok.context(Interface)
     grok.name('tiny_media_embed')
-    grok.require("zope2.View")
+    grok.require('zope2.View')
 
     def getBreadcrumbs(self, path=None):
         """Get breadcrumbs"""
@@ -141,12 +140,12 @@ class TinyMediaEmbed(grok.View):
         if not IFolderish.providedBy(object):
             object = aq_parent(object)
 
-        if INavigationRoot.providedBy(object) or (rooted == "True" and document_base_url[:-1] == object.absolute_url()):
+        if INavigationRoot.providedBy(object) or (rooted == 'True' and document_base_url[:-1] == object.absolute_url()):
             results['parent_url'] = ''
         else:
             results['parent_url'] = aq_parent(object).absolute_url()
 
-        if rooted == "True":
+        if rooted == 'True':
             results['path'] = self.getBreadcrumbs(results['parent_url'])
         else:
             # get all items from siteroot to context (title and url)
@@ -161,17 +160,17 @@ class TinyMediaEmbed(grok.View):
                 'url': brain.getURL(),
                 'portal_type': brain.portal_type,
                 'normalized_type': normalizer.normalize(brain.portal_type),
-                'title': brain.Title == "" and brain.id or brain.Title,
+                'title': brain.Title == '' and brain.id or brain.Title,
                 'icon': brain.getIcon,
                 'is_folderish': brain.is_folderish,
                 'i_type': str(interface)
-                })
+            })
 
         # add catalog_ressults
         results['items'] = catalog_results
 
         # return results in JSON format
-        return json.dumps(results)    
+        return json.dumps(results)
 
     def render(self, rooted, document_base_url):
         """Returns the folderlisting of video objects in JSON"""
@@ -181,5 +180,5 @@ class TinyMediaEmbed(grok.View):
         image_portal_types.extend(utility.containsobjects.split('\n'))
 
         results = self.getListing(image_portal_types, rooted,
-                                    document_base_url, 'File', IVideo)
+                                  document_base_url, 'File', IVideo)
         return results

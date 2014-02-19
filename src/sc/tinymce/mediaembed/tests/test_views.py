@@ -25,8 +25,9 @@ except ImportError:
 
 dir = sc.tinymce.mediaembed.tests
 
-MP3 = open(os.path.join(os.path.dirname(dir.__file__),'test.mp3')).read()
-MP4 = open(os.path.join(os.path.dirname(dir.__file__),'test.mp4')).read()
+MP3 = open(os.path.join(os.path.dirname(dir.__file__), 'test.mp3')).read()
+MP4 = open(os.path.join(os.path.dirname(dir.__file__), 'test.mp4')).read()
+
 
 class VideoListTestCase(unittest.TestCase):
 
@@ -90,7 +91,7 @@ class MediaSearchTestCase(unittest.TestCase):
 
     def test_render_video(self):
         view = queryMultiAdapter((self.v1, self.request), name='media_search')
-        render= view.render(media_type='video')
+        render = view.render(media_type='video')
         if render:
             self.assertTrue(json.loads(render)[0]['title'] == 'Video File')
         else:
@@ -138,7 +139,8 @@ class TinyMediaEmbedTestCase(unittest.TestCase):
 
     def test_getListing(self):
         view = queryMultiAdapter((self.d1, self.request), name='tiny_media_embed')
-        result = view.getListing(filter_portal_types=['Document',],rooted=True,document_base_url=self.folder)
+        result = view.getListing(filter_portal_types=['Document', ], rooted=True,
+                                 document_base_url=self.folder)
         result = json.loads(result)
         self.assertTrue(result['parent_url'] == 'http://nohost/plone')
         self.assertTrue(result['path'][0]['url'] == '/plone')
@@ -148,7 +150,7 @@ class TinyMediaEmbedTestCase(unittest.TestCase):
 
     def test_render(self):
         view = queryMultiAdapter((self.v1, self.request), name='tiny_media_embed')
-        result = view.render(rooted=True, document_base_url = self.folder)
+        result = view.render(rooted=True, document_base_url=self.folder)
         result = json.loads(result)
         items = result['items'][0]
         self.assertTrue(items['title'] == 'Video File')
